@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginObj: any = {
     EmailId: '',
-    Password: '',
+    Password: ''
   };
 
   router = inject(Router);
@@ -18,6 +18,9 @@ export class LoginComponent {
   constructor(private usrService: UserService) {}
 
   login() {
+
+   
+    
     this.usrService.onLogin(this.loginObj).subscribe(
       (res: any) => {
         if (res.result) {
@@ -28,6 +31,7 @@ export class LoginComponent {
         }
       },
       (error) => {
+        console.log(error)
         alert('wrong credentials');
       }
     );

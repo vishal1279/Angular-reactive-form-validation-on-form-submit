@@ -14,7 +14,7 @@ export const customInterceptor: HttpInterceptorFn = (req, next) => {
 
   const clonReq = req.clone({
     setHeaders: {
-      Authorization: `Bearer ${loggedUserData.token}`,
+      Authorization: `Bearer ${loggedUserData?.token}`,
     },
   });
   return next(clonReq).pipe(

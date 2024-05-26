@@ -1,1 +1,86 @@
-<p>dashboard works!</p>
+<div class="col-md-12">
+    <div class="col">
+        <div class="resizable-container">
+            <div appResize class="resizable">
+                <!-- Content here -->
+            </div>
+            <div class="drag-handle">
+
+            </div>
+        </div>
+    </div>
+    <div class="col dataTable">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                User List
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <input type="text" class="form-control" [(ngModel)]="filterObj.Name"
+                            placeholder="Search By Name">
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control" [(ngModel)]="filterObj.ContactNo"
+                            placeholder="Search By Mobile">
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control" [(ngModel)]="filterObj.Email"
+                            placeholder="Search By Email">
+                    </div>
+                    <div class="col-3">
+                        <button class="btn btn-sm btn-success">Search</button>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-3">
+                        <div class="dataTables_length"><label>Show
+                                <select [(ngModel)]="filterObj.PageSize" (change)="filetrCandidates('')">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select> entries</label>
+                        </div>
+                    </div>
+                    <div class="col-md-7" style="float:right;text-align: right">
+                        <div class="paginations">
+                            <div>
+                                <div class="btn-group" id="radioBtn">
+                                    <a class="btn btn-primary btn-sm notActive" (click)="onPrevious()"> Previous </a>
+                                    <a class="btn btn-primary btn-sm active">{{filterObj.PageNumber}}</a>
+                                    <a class="btn btn-primary btn-sm notActive" (click)="onNext()">Next </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <!-- <div class="col-3 pt-2" *ngFor="let item of userList;let index =index"> -->
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>UserId</th>
+                                <th>Name</th>
+                                <th>Mobile</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of userList;let index =index">
+                                <td>{{item.userId}}</td>
+                                <td>{{item.firstName}} {{item.middleName}} {{item.lastName}}</td>
+                                <td>{{item.mobileNo}}</td>
+                                <td>{{item.emailId}}</td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

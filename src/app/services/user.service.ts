@@ -42,4 +42,13 @@ export class UserService {
         this.$refreshTokenReceived.next(true);
       });
   }
+
+  getAllPatients() {
+    return this.http.get('https://freeapi.gerasim.in/api/HospitalAppointment/GetAllPatients');
+  }
+
+  getAllAppointments() {
+    return this.http.get('https://freeapi.gerasim.in/api/HospitalAppointment/GetAllAppointments');
+  }
+
 }

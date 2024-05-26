@@ -1,16 +1,24 @@
 <div class="parent">
   <div class="wrapper">
-    <form action="">
+    <form [formGroup]="_loginForm" (ngSubmit)="onSubmit()">
       <h1>Login</h1>
       <div class="input-box">
-        <input type="text" name="EmailId" [(ngModel)]="loginObj.EmailId" placeholder="Email" required>
+        <input type="email" name="EmailId" placeholder="Email" formControlName="EmailId">
         <i class='bx bxs-user'></i>
+        <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-danger">
+          <div *ngIf="email?.errors?.['required']">Email is required.</div>
+          <div *ngIf="email?.errors?.['email']">Enter a valid email.</div>
+        </div>
       </div>
       <div class="input-box">
-        <input type="password" name="Password" [(ngModel)]="loginObj.Password" placeholder="password" required>
+        <input type="password" name="Password" placeholder="password" formControlName="Password">
         <i class='bx bxs-lock-alt'></i>
+        <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-danger">
+          <div *ngIf="password?.errors?.['required']">Password is required.</div>
+          <div *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters long.</div>
+        </div>
       </div>
-      <button type="button" class="btn" (click)="login()">Login</button>
+      <button type="submit" [disabled]="_loginForm.invalid" class="btn">Login</button>
 
     </form>
   </div>

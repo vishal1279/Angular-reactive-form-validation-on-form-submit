@@ -120,3 +120,7 @@ body{
 .register-link p a:hover{
     text-decoration: underline;
 }
+
+.text-danger {
+  font-size: 14px;
+}

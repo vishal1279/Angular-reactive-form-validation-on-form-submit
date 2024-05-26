@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LayoutComponent } from './pages/layout/layout.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   HttpClientModule,
   provideHttpClient,
@@ -21,7 +21,7 @@ import { customInterceptor } from './services/custom.interceptor';
     DashboardComponent,
     LayoutComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule,BrowserModule,ReactiveFormsModule, FormsModule, HttpClientModule],
   providers: [provideHttpClient(withInterceptors([customInterceptor]))],
   bootstrap: [AppComponent],
 })
